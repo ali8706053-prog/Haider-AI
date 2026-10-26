@@ -74,10 +74,10 @@ export default function HumanVsAiComparison({ onOpenDemo }: HumanVsAiComparisonP
           </p>
 
           {/* Toggle between Graphic View and Detailed Economic Breakdown */}
-          <div className="mt-8 inline-flex items-center p-1 rounded-full bg-[#0a0f1d] border border-white/10 shadow-lg">
+          <div className="mt-8 inline-flex max-w-full flex-col sm:flex-row items-stretch sm:items-center p-1 sm:p-1.5 rounded-2xl sm:rounded-full bg-[#0a0f1d] border border-white/10 shadow-lg gap-1">
             <button
               onClick={() => setActiveTab("graphic")}
-              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${
+              className={`px-4 sm:px-5 py-2.5 rounded-xl sm:rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-center ${
                 activeTab === "graphic"
                   ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-md shadow-blue-600/30"
                   : "text-slate-400 hover:text-white"
@@ -87,7 +87,7 @@ export default function HumanVsAiComparison({ onOpenDemo }: HumanVsAiComparisonP
             </button>
             <button
               onClick={() => setActiveTab("breakdown")}
-              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${
+              className={`px-4 sm:px-5 py-2.5 rounded-xl sm:rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-center ${
                 activeTab === "breakdown"
                   ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-md shadow-blue-600/30"
                   : "text-slate-400 hover:text-white"
@@ -212,24 +212,24 @@ export default function HumanVsAiComparison({ onOpenDemo }: HumanVsAiComparisonP
         )}
 
         {/* Conversion Action Bar */}
-        <div className="mt-14 max-w-3xl mx-auto text-center p-8 rounded-3xl bg-gradient-to-r from-blue-900/40 via-[#0a1226] to-cyan-900/30 border border-cyan-400/30 shadow-2xl shadow-blue-950/50">
-          <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+        <div className="mt-10 sm:mt-14 max-w-3xl mx-auto text-center p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-blue-900/40 via-[#0a1226] to-cyan-900/30 border border-cyan-400/30 shadow-2xl shadow-blue-950/50">
+          <h3 className="text-lg sm:text-2xl font-bold text-white mb-2">
             Ready to give your front desk superhuman capabilities?
           </h3>
-          <p className="text-xs sm:text-sm text-slate-300 mb-6 max-w-xl mx-auto">
+          <p className="text-xs sm:text-sm text-slate-300 mb-5 sm:mb-6 max-w-xl mx-auto leading-relaxed">
             Book a 15-minute live demo. We'll set up a prototype agent for your business phone number and let you test call it yourself.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
             <button
               onClick={onOpenDemo}
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-xl shadow-cyan-500/25 transition-all hover:scale-105"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-xl shadow-cyan-500/25 transition-all hover:scale-105 active:scale-95"
             >
-              <span>Book Your Front-Desk Upgrade Demo</span>
+              <span>Book Front-Desk Upgrade Demo</span>
               <ArrowRight className="w-4 h-4" />
             </button>
             <a
               href="#voice-demo"
-              className="px-6 py-3.5 rounded-full text-sm font-semibold text-slate-300 hover:text-white bg-white/[0.05] border border-white/10 hover:bg-white/[0.1] transition-all"
+              className="w-full sm:w-auto text-center px-5 sm:px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold text-slate-300 hover:text-white bg-white/[0.05] border border-white/10 hover:bg-white/[0.1] transition-all"
             >
               Hear Audio Samples First
             </a>

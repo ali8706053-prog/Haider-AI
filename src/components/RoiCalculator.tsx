@@ -43,17 +43,17 @@ export default function RoiCalculator({ onOpenDemo }: RoiCalculatorProps) {
         </div>
 
         {/* Dual-Card Grid */}
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
           {/* Controls Card */}
-          <div className="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-8 space-y-6 border border-white/10">
-            <h3 className="text-lg font-bold text-white flex items-center justify-between">
+          <div className="lg:col-span-7 glass-panel rounded-2xl sm:rounded-3xl p-5 sm:p-8 space-y-5 sm:space-y-6 border border-white/10">
+            <h3 className="text-base sm:text-lg font-bold text-white flex items-center justify-between">
               <span>Your Business Numbers</span>
-              <span className="text-xs font-normal text-slate-400">Drag sliders to adjust</span>
+              <span className="text-[11px] sm:text-xs font-normal text-slate-400">Drag sliders to adjust</span>
             </h3>
 
             {/* Slider 1: Monthly Calls */}
             <div>
-              <div className="flex justify-between text-sm mb-2">
+              <div className="flex justify-between text-xs sm:text-sm mb-2">
                 <span className="text-slate-300 font-medium">Monthly Inbound Calls</span>
                 <span className="text-cyan-400 font-bold">{monthlyCalls} calls/mo</span>
               </div>
@@ -64,7 +64,8 @@ export default function RoiCalculator({ onOpenDemo }: RoiCalculatorProps) {
                 step="25"
                 value={monthlyCalls}
                 onChange={(e) => setMonthlyCalls(Number(e.target.value))}
-                className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400"
+                className="w-full h-3 sm:h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400 py-1"
+                aria-label="Monthly inbound calls"
               />
               <div className="flex justify-between text-[10px] text-slate-500 mt-1">
                 <span>50</span>
@@ -75,7 +76,7 @@ export default function RoiCalculator({ onOpenDemo }: RoiCalculatorProps) {
 
             {/* Slider 2: Missed Call Rate */}
             <div>
-              <div className="flex justify-between text-sm mb-2">
+              <div className="flex justify-between text-xs sm:text-sm mb-2">
                 <span className="text-slate-300 font-medium">Estimated Missed Call Rate</span>
                 <span className="text-amber-400 font-bold">{missedRate}%</span>
               </div>
@@ -86,7 +87,8 @@ export default function RoiCalculator({ onOpenDemo }: RoiCalculatorProps) {
                 step="1"
                 value={missedRate}
                 onChange={(e) => setMissedRate(Number(e.target.value))}
-                className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400"
+                className="w-full h-3 sm:h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400 py-1"
+                aria-label="Estimated missed call rate"
               />
               <div className="flex justify-between text-[10px] text-slate-500 mt-1">
                 <span>5% (Rare)</span>
@@ -97,7 +99,7 @@ export default function RoiCalculator({ onOpenDemo }: RoiCalculatorProps) {
 
             {/* Slider 3: Average Client Value */}
             <div>
-              <div className="flex justify-between text-sm mb-2">
+              <div className="flex justify-between text-xs sm:text-sm mb-2">
                 <span className="text-slate-300 font-medium">Average Customer / Retainer Value</span>
                 <span className="text-emerald-400 font-bold">${avgClientValue.toLocaleString()}</span>
               </div>
@@ -108,7 +110,8 @@ export default function RoiCalculator({ onOpenDemo }: RoiCalculatorProps) {
                 step="50"
                 value={avgClientValue}
                 onChange={(e) => setAvgClientValue(Number(e.target.value))}
-                className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400"
+                className="w-full h-3 sm:h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400 py-1"
+                aria-label="Average customer value"
               />
               <div className="flex justify-between text-[10px] text-slate-500 mt-1">
                 <span>$100</span>
@@ -119,7 +122,7 @@ export default function RoiCalculator({ onOpenDemo }: RoiCalculatorProps) {
 
             {/* Slider 4: Conversion Rate */}
             <div>
-              <div className="flex justify-between text-sm mb-2">
+              <div className="flex justify-between text-xs sm:text-sm mb-2">
                 <span className="text-slate-300 font-medium">Booking / Close Rate on Answered Calls</span>
                 <span className="text-blue-400 font-bold">{closingRate}%</span>
               </div>
@@ -130,25 +133,26 @@ export default function RoiCalculator({ onOpenDemo }: RoiCalculatorProps) {
                 step="5"
                 value={closingRate}
                 onChange={(e) => setClosingRate(Number(e.target.value))}
-                className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-400"
+                className="w-full h-3 sm:h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-400 py-1"
+                aria-label="Booking close rate"
               />
             </div>
           </div>
 
           {/* Results Summary Card */}
-          <div className="lg:col-span-5 rounded-3xl p-7 sm:p-8 bg-gradient-to-b from-blue-950/80 via-[#0a1224] to-[#060c18] border border-cyan-400/40 shadow-2xl shadow-blue-900/30 flex flex-col justify-between">
+          <div className="lg:col-span-5 rounded-2xl sm:rounded-3xl p-5 sm:p-8 bg-gradient-to-b from-blue-950/80 via-[#0a1224] to-[#060c18] border border-cyan-400/40 shadow-2xl shadow-blue-900/30 flex flex-col justify-between">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-400/15 border border-cyan-400/30 text-cyan-300 text-xs font-semibold mb-6">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-400/15 border border-cyan-400/30 text-cyan-300 text-xs font-semibold mb-5 sm:mb-6">
                 <TrendingUp className="w-3.5 h-3.5" />
                 <span>Recoverable Growth Analysis</span>
               </div>
 
               {/* Annual Revenue Stat */}
-              <div className="mb-6">
-                <span className="text-xs uppercase font-medium tracking-wider text-slate-400 block mb-1">
+              <div className="mb-5 sm:mb-6">
+                <span className="text-[11px] sm:text-xs uppercase font-medium tracking-wider text-slate-400 block mb-1">
                   Estimated Annual Lost Revenue
                 </span>
-                <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-cyan-400">
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-cyan-400 truncate">
                   ${annualLostRevenue.toLocaleString()}
                 </div>
                 <div className="text-xs text-slate-400 mt-1">
@@ -157,31 +161,31 @@ export default function RoiCalculator({ onOpenDemo }: RoiCalculatorProps) {
               </div>
 
               {/* Breakdown metrics */}
-              <div className="grid grid-cols-2 gap-3 mb-6 pt-5 border-t border-white/10">
-                <div className="p-3 rounded-xl bg-white/[0.03] border border-white/5">
-                  <span className="text-[11px] text-slate-400 block">Missed Calls/Mo</span>
-                  <span className="text-lg font-bold text-white">{missedCallsPerMonth}</span>
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-5 sm:mb-6 pt-4 sm:pt-5 border-t border-white/10">
+                <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                  <span className="text-[10px] sm:text-[11px] text-slate-400 block">Missed Calls/Mo</span>
+                  <span className="text-base sm:text-lg font-bold text-white">{missedCallsPerMonth}</span>
                 </div>
-                <div className="p-3 rounded-xl bg-white/[0.03] border border-white/5">
-                  <span className="text-[11px] text-slate-400 block">Lost Clients/Mo</span>
-                  <span className="text-lg font-bold text-white">{lostDealsPerMonth}</span>
+                <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                  <span className="text-[10px] sm:text-[11px] text-slate-400 block">Lost Clients/Mo</span>
+                  <span className="text-base sm:text-lg font-bold text-white">{lostDealsPerMonth}</span>
                 </div>
               </div>
 
               {/* ROI Banner */}
-              <div className="p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-500/30 flex items-center justify-between mb-8">
+              <div className="p-3 sm:p-3.5 rounded-xl bg-emerald-950/30 border border-emerald-500/30 flex items-center justify-between mb-6 sm:mb-8">
                 <div>
                   <span className="text-xs font-semibold text-emerald-300 block">Estimated Agency ROI</span>
-                  <span className="text-[11px] text-slate-400">Based on Growth Tier</span>
+                  <span className="text-[10px] sm:text-[11px] text-slate-400">Based on Growth Tier</span>
                 </div>
-                <span className="text-2xl font-extrabold text-emerald-400">{estimatedRoiMultiplier}x</span>
+                <span className="text-xl sm:text-2xl font-extrabold text-emerald-400">{estimatedRoiMultiplier}x</span>
               </div>
             </div>
 
             {/* CTA */}
             <button
               onClick={onOpenDemo}
-              className="w-full inline-flex items-center justify-center gap-2 py-4 px-6 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-xl shadow-cyan-500/25 transition-all hover:scale-[1.02]"
+              className="w-full inline-flex items-center justify-center gap-2 py-3.5 sm:py-4 px-6 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-xl shadow-cyan-500/25 transition-all hover:scale-[1.02] active:scale-95"
             >
               <span>Stop Missing Calls Today</span>
               <ArrowRight className="w-4 h-4" />

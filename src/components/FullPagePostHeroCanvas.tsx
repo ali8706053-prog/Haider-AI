@@ -68,7 +68,10 @@ export default function FullPagePostHeroCanvas({
 
     if (!img || !img.complete || img.naturalWidth === 0) return;
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(
+      window.devicePixelRatio || 1,
+      typeof window !== "undefined" && window.innerWidth < 768 ? 1.2 : 1.75
+    );
     const W = canvas.width / dpr;
     const H = canvas.height / dpr;
 
@@ -101,7 +104,10 @@ export default function FullPagePostHeroCanvas({
   const resizeCanvas = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(
+      window.devicePixelRatio || 1,
+      typeof window !== "undefined" && window.innerWidth < 768 ? 1.2 : 1.75
+    );
     canvas.width = window.innerWidth * dpr;
     canvas.height = window.innerHeight * dpr;
     canvas.style.width = `${window.innerWidth}px`;
@@ -232,9 +238,9 @@ export default function FullPagePostHeroCanvas({
   return (
     <div
       aria-hidden="true"
-      className="sticky top-0 left-0 w-full h-screen pointer-events-none z-0 overflow-hidden"
+      className="sticky top-0 left-0 w-full h-[100dvh] max-h-screen pointer-events-none z-0 overflow-hidden"
       style={{
-        marginBottom: "-100vh", // Keeps canvas pinned behind sibling content without occupying vertical space
+        marginBottom: "-100dvh", // Keeps canvas pinned behind sibling content without occupying vertical space
       }}
     >
       {/* Fullscreen Canvas with high-end brightness and contrast calibration */}

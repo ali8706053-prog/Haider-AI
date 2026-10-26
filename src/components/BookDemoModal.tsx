@@ -149,7 +149,7 @@ export default function BookDemoModal({ isOpen, onClose, selectedPlanId }: BookD
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Jordan Mitchell"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#060a14] border border-white/10 text-white text-xs sm:text-sm focus:border-cyan-400 focus:outline-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#060a14] border border-white/10 text-white text-base sm:text-sm focus:border-cyan-400 focus:outline-none"
                 />
               </div>
               <div>
@@ -160,7 +160,7 @@ export default function BookDemoModal({ isOpen, onClose, selectedPlanId }: BookD
                   value={businessName}
                   onChange={(e) => setBusinessName(e.target.value)}
                   placeholder="e.g. Mitchell Legal Group"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#060a14] border border-white/10 text-white text-xs sm:text-sm focus:border-cyan-400 focus:outline-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#060a14] border border-white/10 text-white text-base sm:text-sm focus:border-cyan-400 focus:outline-none"
                 />
               </div>
             </div>
@@ -174,7 +174,7 @@ export default function BookDemoModal({ isOpen, onClose, selectedPlanId }: BookD
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="jordan@lawgroup.com"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#060a14] border border-white/10 text-white text-xs sm:text-sm focus:border-cyan-400 focus:outline-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#060a14] border border-white/10 text-white text-base sm:text-sm focus:border-cyan-400 focus:outline-none"
                 />
               </div>
               <div>
@@ -185,7 +185,7 @@ export default function BookDemoModal({ isOpen, onClose, selectedPlanId }: BookD
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="+1 (555) 019-2834"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#060a14] border border-white/10 text-white text-xs sm:text-sm focus:border-cyan-400 focus:outline-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#060a14] border border-white/10 text-white text-base sm:text-sm focus:border-cyan-400 focus:outline-none"
                 />
               </div>
             </div>
@@ -196,13 +196,13 @@ export default function BookDemoModal({ isOpen, onClose, selectedPlanId }: BookD
                   <Clock className="w-3.5 h-3.5 text-cyan-400" />
                   <span>Preferred Consultation Window (Eastern Time)</span>
                 </label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {timeSlots.map((slot) => (
                     <button
                       type="button"
                       key={slot}
                       onClick={() => setTimeSlot(slot)}
-                      className={`py-2 px-1 text-center rounded-lg text-[11px] font-medium border transition-all ${
+                      className={`py-2 px-1 text-center rounded-lg text-xs font-medium border transition-all ${
                         timeSlot === slot
                           ? "bg-cyan-500/20 border-cyan-400 text-cyan-300 font-bold"
                           : "bg-[#060a14] border-white/10 text-slate-300 hover:border-white/25"

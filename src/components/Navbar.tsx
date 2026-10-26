@@ -101,8 +101,9 @@ export default function Navbar({ onOpenDemo }: NavbarProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 focus:outline-none"
+            className="xl:hidden p-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800/60 active:bg-slate-800 focus:outline-none min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Toggle Navigation Menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -110,36 +111,45 @@ export default function Navbar({ onOpenDemo }: NavbarProps) {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="xl:hidden mt-4 pt-4 pb-6 px-4 rounded-2xl bg-[#0b0f19] border border-white/10 shadow-2xl flex flex-col gap-3">
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-950/40 border border-blue-500/20 text-xs text-blue-300 w-fit">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>U.S. Autonomous AI Voice Operations</span>
-            </div>
+          <>
+            {/* Backdrop click dismiss */}
+            <div
+              className="fixed inset-0 top-[70px] bg-black/60 backdrop-blur-sm z-[-1] xl:hidden animate-fade-in"
+              onClick={() => setMobileMenuOpen(false)}
+              aria-hidden="true"
+            />
+            <div className="xl:hidden mt-3 pt-4 pb-5 px-4 sm:px-6 rounded-2xl bg-[#0b0f19]/95 backdrop-blur-xl border border-white/10 shadow-2xl flex flex-col gap-3 max-h-[calc(100dvh-90px)] overflow-y-auto">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-950/40 border border-blue-500/20 text-xs text-blue-300 w-fit">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>U.S. Autonomous AI Voice Operations</span>
+              </div>
 
-            <div className="flex flex-col gap-2 pt-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-sm font-medium text-slate-300 hover:text-cyan-300 py-1.5 transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
+              <div className="flex flex-col gap-1 pt-1">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-sm font-medium text-slate-200 hover:text-cyan-300 hover:bg-white/[0.04] active:bg-cyan-500/10 px-3 py-2.5 rounded-xl transition-colors flex items-center justify-between"
+                  >
+                    <span>{link.name}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-slate-500" />
+                  </a>
+                ))}
+              </div>
 
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                handleDemoClick();
-              }}
-              className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-500 shadow-lg shadow-blue-600/25 mt-2"
-            >
-              <span>Book a Demo</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleDemoClick();
+                }}
+                className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-500 shadow-lg shadow-blue-600/25 mt-2 active:scale-[0.99] transition-all"
+              >
+                <span>Book a Demo</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </>
         )}
       </div>
     </header>

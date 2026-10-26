@@ -37,18 +37,18 @@ export default function CaseStudies({ onOpenDemo }: CaseStudiesProps) {
           </div>
         </div>
 
-        {/* Tab Selector */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
+        {/* Tab Selector - swipeable on mobile */}
+        <div className="flex overflow-x-auto sm:flex-wrap items-center justify-start sm:justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none">
           {CASE_STUDIES.map((study) => {
             const isSelected = study.id === selectedStudy.id;
             return (
               <button
                 key={study.id}
                 onClick={() => setSelectedStudy(study)}
-                className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 ${
+                className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 shrink-0 ${
                   isSelected
                     ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg shadow-blue-500/25 scale-[1.02]"
-                    : "bg-white/[0.04] text-slate-300 hover:bg-white/[0.08] hover:text-white border border-white/5"
+                    : "bg-white/[0.04] text-slate-300 hover:bg-white/[0.08] hover:text-white border border-white/5 active:bg-white/10"
                 }`}
               >
                 <span>{study.industry}</span>
@@ -59,7 +59,7 @@ export default function CaseStudies({ onOpenDemo }: CaseStudiesProps) {
         </div>
 
         {/* Active Case Study Detail Card */}
-        <div className="max-w-5xl mx-auto glass-panel-glow rounded-3xl p-6 sm:p-10 border border-cyan-400/30 shadow-2xl">
+        <div className="max-w-5xl mx-auto glass-panel-glow rounded-2xl sm:rounded-3xl p-5 sm:p-10 border border-cyan-400/30 shadow-2xl">
           {/* Top Metadata */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/[0.08]">
             <div>
@@ -121,13 +121,13 @@ export default function CaseStudies({ onOpenDemo }: CaseStudiesProps) {
           </div>
 
           {/* Bottom Card Action */}
-          <div className="pt-6 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span className="text-xs text-slate-400">
+          <div className="pt-6 border-t border-white/[0.08] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+            <span className="text-xs text-slate-400 text-center sm:text-left">
               Want a customized blueprint engineered for your business lines?
             </span>
             <button
               onClick={() => onOpenDemo(selectedStudy.title)}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-lg shadow-cyan-500/25 transition-all hover:scale-105"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-lg shadow-cyan-500/25 transition-all hover:scale-105 active:scale-95"
             >
               <span>{selectedStudy.ctaText}</span>
               <ArrowRight className="w-4 h-4" />

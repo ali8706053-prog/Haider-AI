@@ -49,6 +49,23 @@ export default function HeroScrollAnimation({
 
   const [loadProgress, setLoadProgress] = useState(0); // 0–100
   const [isReady, setIsReady] = useState(false);
+  const [scrollMultiplier, setScrollMultiplier] = useState(4);
+
+  // Adapt scroll height multiplier for mobile, tablet, and desktop
+  useEffect(() => {
+    const updateMultiplier = () => {
+      if (window.innerWidth < 768) {
+        setScrollMultiplier(2); // Fast & fluid on mobile touchscreens
+      } else if (window.innerWidth < 1024) {
+        setScrollMultiplier(2.8); // Smooth on iPad & tablets
+      } else {
+        setScrollMultiplier(4); // Full cinematic distance on desktop
+      }
+    };
+    updateMultiplier();
+    window.addEventListener("resize", updateMultiplier, { passive: true });
+    return () => window.removeEventListener("resize", updateMultiplier);
+  }, []);
 
   // ── Draw the frame at floating `f` onto the canvas ──────────────────────
   const drawFrame = useCallback((f: number) => {
@@ -61,7 +78,7 @@ export default function HeroScrollAnimation({
     const img = imagesRef.current[idx];
     if (!img || !img.complete || img.naturalWidth === 0) return;
 
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     const W = canvas.width / dpr;
     const H = canvas.height / dpr;
 
@@ -90,7 +107,7 @@ export default function HeroScrollAnimation({
   const resizeCanvas = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     canvas.width = window.innerWidth * dpr;
     canvas.height = window.innerHeight * dpr;
     canvas.style.width = `${window.innerWidth}px`;
@@ -237,16 +254,17 @@ export default function HeroScrollAnimation({
      */
     <section
       ref={sectionRef}
-      style={{ height: `${SCROLL_MULTIPLIER * 100}vh`, position: "relative" }}
+      style={{ height: `${scrollMultiplier * 100}vh`, position: "relative" }}
     >
       {/* ── Sticky container: stays in viewport while section is in view ── */}
       <div
+        className="h-screen max-h-screen"
         style={{
           position: "sticky",
           top: 0,
           left: 0,
           width: "100%",
-          height: "100vh",
+          height: "100dvh",
           overflow: "hidden",
           backgroundColor: BG_COLOR,
         }}
@@ -304,32 +322,19 @@ export default function HeroScrollAnimation({
             Pointer-events are normal so all buttons / links work.
         ─────────────────────────────────────────────────────────────── */}
         <div
+          className="relative z-[2] w-full h-full flex flex-col justify-center overflow-y-auto sm:overflow-y-hidden"
           style={{
-            position: "relative",
-            zIndex: 2,
-            width: "100%",
-            height: "100%",
-            // allow children to scroll content inside sticky viewport
-            overflowY: "hidden",
+            WebkitOverflowScrolling: "touch",
           }}
         >
           {children}
         </div>
 
-        {/* ── Scroll hint indicator ─────────────────────────────────────── */}
+        {/* ── Scroll hint indicator (hidden on mobile phones to save vertical space) ─────────────────── */}
         <div
           aria-hidden="true"
+          className="hidden md:flex flex-col items-center gap-1.5 opacity-50 absolute bottom-6 left-1/2 -translate-x-1/2 z-[3]"
           style={{
-            position: "absolute",
-            bottom: "2rem",
-            left: "50%",
-            transform: "translateX(-50%)",
-            zIndex: 3,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "6px",
-            opacity: 0.5,
             animation: "scrollBounce 2s ease-in-out infinite",
           }}
         >

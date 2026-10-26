@@ -152,10 +152,10 @@ export default function ContactSection() {
 
           {/* Right Column: Working Contact & Booking Form */}
           <div className="lg:col-span-7">
-            <div className="glass-panel-glow rounded-3xl p-7 sm:p-10 relative">
-              <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+            <div className="glass-panel-glow rounded-2xl sm:rounded-3xl p-5 sm:p-10 relative">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5" noValidate>
                 <div className="mb-2">
-                  <h3 className="text-xl font-bold text-white">Schedule Your AI Receptionist Consultation</h3>
+                  <h3 className="text-lg sm:text-xl font-bold text-white">Schedule Your AI Receptionist Consultation</h3>
                   <p className="text-xs text-slate-400 mt-1">
                     Fill out the form below. We'll confirm the expected follow-up time when you submit your inquiry.
                   </p>
@@ -195,7 +195,7 @@ export default function ContactSection() {
                       placeholder="e.g. Jordan Mitchell"
                       className={`w-full px-4 py-3 rounded-xl bg-[#060a14] border ${
                         errors.name ? "border-red-500 focus:border-red-400" : "border-white/10 focus:border-cyan-400"
-                      } text-white text-sm focus:outline-none transition-colors`}
+                      } text-white text-base sm:text-sm focus:outline-none transition-colors`}
                     />
                     {errors.name && <p className="text-[11px] text-red-400 mt-1">{errors.name}</p>}
                   </div>
@@ -214,7 +214,7 @@ export default function ContactSection() {
                       placeholder="e.g. Apex Family Dental"
                       className={`w-full px-4 py-3 rounded-xl bg-[#060a14] border ${
                         errors.businessName ? "border-red-500 focus:border-red-400" : "border-white/10 focus:border-cyan-400"
-                      } text-white text-sm focus:outline-none transition-colors`}
+                      } text-white text-base sm:text-sm focus:outline-none transition-colors`}
                     />
                     {errors.businessName && <p className="text-[11px] text-red-400 mt-1">{errors.businessName}</p>}
                   </div>
@@ -235,7 +235,7 @@ export default function ContactSection() {
                       placeholder="jordan@company.com"
                       className={`w-full px-4 py-3 rounded-xl bg-[#060a14] border ${
                         errors.email ? "border-red-500 focus:border-red-400" : "border-white/10 focus:border-cyan-400"
-                      } text-white text-sm focus:outline-none transition-colors`}
+                      } text-white text-base sm:text-sm focus:outline-none transition-colors`}
                     />
                     {errors.email && <p className="text-[11px] text-red-400 mt-1">{errors.email}</p>}
                   </div>
@@ -254,7 +254,7 @@ export default function ContactSection() {
                       placeholder="+1 (555) 012-3456"
                       className={`w-full px-4 py-3 rounded-xl bg-[#060a14] border ${
                         errors.phone ? "border-red-500 focus:border-red-400" : "border-white/10 focus:border-cyan-400"
-                      } text-white text-sm focus:outline-none transition-colors`}
+                      } text-white text-base sm:text-sm focus:outline-none transition-colors`}
                     />
                     {errors.phone && <p className="text-[11px] text-red-400 mt-1">{errors.phone}</p>}
                   </div>
@@ -270,7 +270,7 @@ export default function ContactSection() {
                       id="contact-volume"
                       value={formData.monthlyCallVolume}
                       onChange={(e) => handleInputChange("monthlyCallVolume", e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-[#060a14] border border-white/10 focus:border-cyan-400 text-white text-sm focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-[#060a14] border border-white/10 focus:border-cyan-400 text-white text-base sm:text-sm focus:outline-none transition-colors"
                     >
                       <option value="Under 200 calls/mo (Starter)">Under 200 calls/mo (Starter)</option>
                       <option value="200-300 calls/mo (Professional)">200 – 300 calls/mo (Professional)</option>
@@ -288,7 +288,7 @@ export default function ContactSection() {
                       id="contact-service"
                       value={formData.primaryServiceInterest}
                       onChange={(e) => handleInputChange("primaryServiceInterest", e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-[#060a14] border border-white/10 focus:border-cyan-400 text-white text-sm focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-[#060a14] border border-white/10 focus:border-cyan-400 text-white text-base sm:text-sm focus:outline-none transition-colors"
                     >
                       <option value="AI Voice Receptionist">AI Voice Receptionist</option>
                       <option value="AI Appointment Receptionist">AI Appointment Receptionist</option>
@@ -312,7 +312,7 @@ export default function ContactSection() {
                     value={formData.notes}
                     onChange={(e) => handleInputChange("notes", e.target.value)}
                     placeholder="Tell us about your current phone setup, calendar system (e.g. Google Calendar, Calendly), or CRM software..."
-                    className="w-full px-4 py-3 rounded-xl bg-[#060a14] border border-white/10 focus:border-cyan-400 text-white text-sm focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-[#060a14] border border-white/10 focus:border-cyan-400 text-white text-base sm:text-sm focus:outline-none transition-colors"
                   />
                 </div>
 
@@ -320,7 +320,7 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 px-6 rounded-2xl text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 hover:from-blue-500 hover:to-cyan-300 shadow-xl shadow-cyan-500/25 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="w-full py-3.5 sm:py-4 px-6 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 hover:from-blue-500 hover:to-cyan-300 shadow-xl shadow-cyan-500/25 transition-all flex items-center justify-center gap-2 disabled:opacity-50 active:scale-98"
                 >
                   {isSubmitting ? (
                     <>

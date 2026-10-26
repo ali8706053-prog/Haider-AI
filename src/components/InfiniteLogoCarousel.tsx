@@ -98,8 +98,8 @@ export default function InfiniteLogoCarousel() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[180px] bg-blue-600/10 rounded-full blur-[110px] pointer-events-none" />
 
       {/* Left and Right Fade Masking for Seamless Edge Blend */}
-      <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-48 z-20 pointer-events-none bg-gradient-to-r from-[#030712] via-[#030712]/80 to-transparent" />
-      <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-48 z-20 pointer-events-none bg-gradient-to-l from-[#030712] via-[#030712]/80 to-transparent" />
+      <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-28 md:w-48 z-20 pointer-events-none bg-gradient-to-r from-[#030712] via-[#030712]/80 to-transparent" />
+      <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-28 md:w-48 z-20 pointer-events-none bg-gradient-to-l from-[#030712] via-[#030712]/80 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 mb-6 flex items-center justify-between text-xs text-slate-400 font-medium">
         <div className="flex items-center gap-2">

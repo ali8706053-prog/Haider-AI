@@ -36,8 +36,8 @@ export default function Pricing({ onOpenDemo }: PricingProps) {
           </p>
 
           {/* Complimentary First Month Signing Bonus Banner */}
-          <div className="mt-6 inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 text-xs sm:text-sm font-medium shadow-lg">
-            <Gift className="w-4 h-4 text-emerald-400 shrink-0" />
+          <div className="mt-6 inline-flex max-w-full items-start sm:items-center text-left sm:text-center gap-2.5 px-3.5 sm:px-4 py-2.5 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 text-xs sm:text-sm font-medium shadow-lg">
+            <Gift className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5 sm:mt-0" />
             <span>
               <strong>Current Signing Offer:</strong> First month's maintenance included as a complimentary bonus. (Setup fee applies to all tiers).
             </span>
@@ -52,7 +52,7 @@ export default function Pricing({ onOpenDemo }: PricingProps) {
             return (
               <div
                 key={tier.id}
-                className={`relative rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 ${
+                className={`relative rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 ${
                   isRecommended
                     ? "bg-gradient-to-b from-[#0e172e] via-[#091024] to-[#050b18] border-2 border-cyan-400/70 shadow-2xl shadow-cyan-500/20 lg:-translate-y-2 z-10"
                     : "bg-[#080d19]/90 border border-white/[0.08] hover:border-white/20 shadow-xl shadow-black/40"
@@ -60,9 +60,9 @@ export default function Pricing({ onOpenDemo }: PricingProps) {
               >
                 {/* Recommended Badge */}
                 {isRecommended && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-500 text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-cyan-400/30 flex items-center gap-1.5 whitespace-nowrap">
-                    <Sparkles className="w-3.5 h-3.5 fill-current" />
-                    <span>Recommended for Appointments</span>
+                  <div className="absolute -top-3.5 sm:-top-4 left-1/2 -translate-x-1/2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-500 text-slate-950 font-extrabold text-[10px] sm:text-xs uppercase tracking-wider shadow-lg shadow-cyan-400/30 flex items-center gap-1.5 max-w-[92%] justify-center text-center">
+                    <Sparkles className="w-3.5 h-3.5 fill-current shrink-0" />
+                    <span className="truncate sm:whitespace-normal">Recommended for Appointments</span>
                   </div>
                 )}
 

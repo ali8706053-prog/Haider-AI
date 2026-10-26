@@ -49,7 +49,7 @@ export default function StickyMobileCta({ onOpenDemo }: StickyMobileCtaProps) {
 
         <button
           onClick={handleClick}
-          className="flex-1 max-w-[210px] py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 hover:from-blue-500 hover:to-cyan-300 shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-1.5 active:scale-95 transition-all"
+          className="flex-1 max-w-[220px] min-h-[44px] py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 hover:from-blue-500 hover:to-cyan-300 shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-1.5 active:scale-95 transition-all"
         >
           <span>Book a Demo</span>
           <ArrowRight className="w-3.5 h-3.5" />

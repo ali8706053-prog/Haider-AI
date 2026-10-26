@@ -11,9 +11,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-transparent border-t border-white/[0.08] pt-16 pb-16 md:pb-12 relative overflow-hidden">
+    <footer className="bg-transparent border-t border-white/[0.08] pt-12 sm:pt-16 pb-28 md:pb-12 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 mb-12 sm:mb-14">
           {/* Brand Info (2 columns) */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-3">

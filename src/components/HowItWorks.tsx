@@ -114,7 +114,7 @@ export default function HowItWorks({ onOpenDemo }: HowItWorksProps) {
           </div>
           <button
             onClick={onOpenDemo}
-            className="shrink-0 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-lg shadow-blue-600/25 transition-all"
+            className="w-full sm:w-auto shrink-0 px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-lg shadow-blue-600/25 transition-all active:scale-95"
           >
             Start Your Setup
           </button>

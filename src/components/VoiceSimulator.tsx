@@ -77,40 +77,40 @@ export default function VoiceSimulator({ onOpenDemo }: VoiceSimulatorProps) {
           </p>
         </div>
 
-        {/* Industry Scenario Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
+        {/* Industry Scenario Tabs - swipeable on mobile, centered wrap on desktop */}
+        <div className="flex overflow-x-auto sm:flex-wrap items-center justify-start sm:justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none">
           {AUDIO_SAMPLES.map((sample) => {
             const isSelected = sample.id === selectedSample.id;
             return (
               <button
                 key={sample.id}
                 onClick={() => handleSelectSample(sample)}
-                className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center gap-2.5 ${
+                className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center gap-2 shrink-0 ${
                   isSelected
                     ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg shadow-blue-500/25 scale-[1.02]"
-                    : "bg-white/[0.04] text-slate-300 hover:bg-white/[0.08] hover:text-white border border-white/5"
+                    : "bg-white/[0.04] text-slate-300 hover:bg-white/[0.08] hover:text-white border border-white/5 active:bg-white/10"
                 }`}
               >
                 <span>{sample.industry}</span>
-                {isSelected && <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>}
+                {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>}
               </button>
             );
           })}
         </div>
 
         {/* Interactive Audio Player & Conversation Chamber */}
-        <div className="max-w-4xl mx-auto glass-panel-glow rounded-3xl p-6 sm:p-8 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto glass-panel-glow rounded-2xl sm:rounded-3xl p-5 sm:p-8 relative overflow-hidden">
           {/* Top Bar of Audio Player */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-white/[0.08]">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-cyan-400/30 flex items-center justify-center text-cyan-300 shadow-inner">
-                <Mic className="w-6 h-6" />
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-5 sm:pb-6 border-b border-white/[0.08]">
+            <div className="flex items-center gap-3 w-full sm:w-auto">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-cyan-400/30 flex items-center justify-center text-cyan-300 shadow-inner shrink-0">
+                <Mic className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <div>
-                <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-                  <span>{selectedSample.title}</span>
+              <div className="min-w-0 flex-1">
+                <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2 truncate">
+                  <span className="truncate">{selectedSample.title}</span>
                 </h3>
-                <p className="text-xs text-slate-400 flex items-center gap-2">
+                <p className="text-xs text-slate-400 flex items-center gap-2 flex-wrap">
                   <span>Agent: <strong className="text-cyan-300 font-medium">{selectedSample.personaName}</strong></span>
                   <span>•</span>
                   <span>Latency: <strong className="text-emerald-400 font-medium">{selectedSample.speedMs}ms</strong></span>
@@ -119,18 +119,19 @@ export default function VoiceSimulator({ onOpenDemo }: VoiceSimulatorProps) {
             </div>
 
             {/* Play/Pause Control & Latency Badge */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto justify-between sm:justify-end">
               <button
                 onClick={handleReset}
-                className="p-2.5 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+                className="p-2.5 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors shrink-0"
                 title="Restart Conversation"
+                aria-label="Restart conversation"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
 
               <button
                 onClick={togglePlay}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cyan-400 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-cyan-400/30 hover:bg-cyan-300 active:scale-95 transition-all"
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-cyan-400 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-cyan-400/30 hover:bg-cyan-300 active:scale-95 transition-all"
               >
                 {isPlaying ? (
                   <>
@@ -192,7 +193,7 @@ export default function VoiceSimulator({ onOpenDemo }: VoiceSimulatorProps) {
                   </div>
 
                   <div
-                    className={`max-w-[85%] sm:max-w-[75%] p-4 rounded-2xl text-sm leading-relaxed ${
+                    className={`max-w-[92%] sm:max-w-[75%] p-3.5 sm:p-4 rounded-2xl text-xs sm:text-sm leading-relaxed ${
                       isAi
                         ? isCurrent && isPlaying
                           ? "bg-blue-600/30 border border-cyan-400/50 text-white shadow-lg shadow-blue-500/15"
@@ -208,34 +209,34 @@ export default function VoiceSimulator({ onOpenDemo }: VoiceSimulatorProps) {
           </div>
 
           {/* Technical Specs Footer */}
-          <div className="mt-8 pt-6 border-t border-white/[0.08] grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-              <div className="text-xl sm:text-2xl font-bold text-cyan-400">&lt;800ms</div>
-              <div className="text-[11px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">Response Latency</div>
+          <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/[0.08] grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 text-center">
+            <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.02] border border-white/5">
+              <div className="text-lg sm:text-2xl font-bold text-cyan-400">&lt;800ms</div>
+              <div className="text-[10px] sm:text-[11px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">Response Latency</div>
             </div>
-            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-              <div className="text-xl sm:text-2xl font-bold text-emerald-400">100%</div>
-              <div className="text-[11px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">Full Duplex Audio</div>
+            <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.02] border border-white/5">
+              <div className="text-lg sm:text-2xl font-bold text-emerald-400">100%</div>
+              <div className="text-[10px] sm:text-[11px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">Full Duplex Audio</div>
             </div>
-            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-              <div className="text-xl sm:text-2xl font-bold text-blue-400">48kHz</div>
-              <div className="text-[11px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">HD Neural Voice</div>
+            <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.02] border border-white/5">
+              <div className="text-lg sm:text-2xl font-bold text-blue-400">48kHz</div>
+              <div className="text-[10px] sm:text-[11px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">HD Neural Voice</div>
             </div>
-            <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-              <div className="text-xl sm:text-2xl font-bold text-purple-400">Zero</div>
-              <div className="text-[11px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">Hallucinations</div>
+            <div className="p-2.5 sm:p-3 rounded-xl bg-white/[0.02] border border-white/5">
+              <div className="text-lg sm:text-2xl font-bold text-purple-400">Zero</div>
+              <div className="text-[10px] sm:text-[11px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">Hallucinations</div>
             </div>
           </div>
         </div>
 
         {/* CTA Bar below audio */}
-        <div className="mt-12 text-center">
-          <p className="text-sm text-slate-400 mb-4">
+        <div className="mt-10 sm:mt-12 text-center px-4">
+          <p className="text-xs sm:text-sm text-slate-400 mb-4 max-w-md mx-auto">
             Want to test an AI agent configured specifically for your business phone number?
           </p>
           <button
             onClick={onOpenDemo}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-600/30 transition-all hover:scale-105"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-600/30 transition-all hover:scale-105 active:scale-95"
           >
             <span>Request a Custom Agent Prototype</span>
             <Sparkles className="w-4 h-4 text-cyan-300" />
