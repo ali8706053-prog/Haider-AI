@@ -37,7 +37,7 @@ export async function PATCH(
 
     const { data, error } = await supabase
       .from("inquiries")
-      .update(updates)
+      .update(updates as never)
       .eq("id", id);
 
     if (error) {
