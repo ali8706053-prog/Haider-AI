@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
+import { Database } from "@/types/database";
 
 export async function PATCH(
   request: Request,
@@ -14,7 +15,7 @@ export async function PATCH(
     const body = await request.json();
     const { status, notes } = body;
 
-    const updates: Record<string, any> = {
+    const updates: Database["public"]["Tables"]["inquiries"]["Update"] = {
       updated_at: new Date().toISOString(),
     };
 
